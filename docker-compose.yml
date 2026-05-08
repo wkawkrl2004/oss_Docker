@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  fastapi:
+    build: .
+    container_name: courses-api
+    ports:
+      - "80:8000"     # 외부 80포트 → 컨테이너 내부 8000포트
+    restart: always   # EC2 재시작 후 자동으로 컨테이너 재구동
+    volumes:
+      - ./courses.json:/app/courses.json  # 데이터 영속성
